@@ -99,9 +99,9 @@ class Trainer:
             ]
 
         if self.config.optimizer_type == "sgd":
-            optimizer = torch.optim.SGD(optimizer_parameters, lr=self.config.optimizer_lr, momentum=self.config.optimizer_momentum,)
+            optimizer = torch.optim.SGD(optimizer_parameters, lr=self.config.optimizer_lr, momentum=self.config.optimizer_momentum, weight_decay=self.config.optimizer_weight_decay)
         elif self.config.optimizer_type == "adam":
-            optimizer = torch.optim.Adam(optimizer_parameters, lr=self.config.optimizer_lr, eps=1e-9)
+            optimizer = torch.optim.Adam(optimizer_parameters, lr=self.config.optimizer_lr, eps=1e-9, weight_decay=self.config.optimizer_weight_decay)
         else:
             raise NotImplementedError
         return optimizer
